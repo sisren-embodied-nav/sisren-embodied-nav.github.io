@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SISREN – Spatial Intelligence and Structured Reasoning for Embodied Navigation | CoRL 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f7fa;
+      --text: #1a2235;
+      --text-muted: #4a5a6e;
+      --accent: #1e5a8e;
+      --accent-light: #e3eef6;
+      --border: #d4dce8;
+      --card-bg: #fff;
+      --max-width: 960px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 18px;
+    }
+    .hero {
+      width: 100%;
+      min-height: 420px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(15,25,35,0.72) 0%, rgba(20,35,45,0.68) 50%, rgba(15,30,40,0.78) 100%),
+                  url("https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1920px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg") center / cover no-repeat;
+    }
+    .hero-nav {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .hero-nav-center {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem 1.25rem;
+    }
+    .hero-nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.15rem 0.5rem;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 500;
+      padding: 0.4rem 0.75rem;
+      border-radius: 2px;
+    }
+    .hero-nav-links a:hover { color: #fff; background: rgba(255,255,255,0.15); }
+    .hero-nav-links a.active { background: rgba(0,0,0,0.5); color: #fff; }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem 1rem 3rem;
+      color: #fff;
+    }
+    .hero .workshop-label {
+      font-size: 1.05rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin: 0 0 0.6rem 0;
+      color: #e6c84a;
+    }
+    .hero .title-rule {
+      width: 140px;
+      height: 1px;
+      background: rgba(200,220,240,0.6);
+      margin: 0 auto 0.9rem;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(2.4rem, 6vw, 3.75rem);
+      font-weight: 400;
+      margin: 0 0 0.6rem 0;
+      letter-spacing: -0.02em;
+      color: #fff;
+      line-height: 1.2;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.35);
+    }
+    .hero .tagline {
+      font-size: 1.2rem;
+      margin: 0 0 0.9rem 0;
+      color: rgba(255,255,255,0.95);
+      font-weight: 400;
+    }
+    .hero .badge {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #e6c84a;
+      letter-spacing: 0.02em;
+    }
+    .hero .hero-date {
+      margin-top: 0.35rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.95);
+      letter-spacing: 0.03em;
+    }
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin: 2.5rem 0 1.1rem 0;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid var(--accent);
+    }
+    h3 { font-size: 1.25rem; font-weight: 600; margin: 1.5rem 0 0.5rem 0; }
+    p { margin: 0 0 1.1rem 0; }
+    ul { margin: 0 0 1.1rem 0; padding-left: 1.6rem; }
+    li { margin-bottom: 0.4rem; }
+    a { color: var(--accent); }
+    a:hover { text-decoration: underline; }
+    .abstract {
+      background: var(--accent-light);
+      padding: 1.4rem 1.6rem;
+      border-radius: 8px;
+      margin: 1.2rem 0;
+      border-left: 4px solid var(--accent);
+    }
+    .person-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 1.75rem;
+      margin: 1rem 0;
+    }
+    .person-grid.organizers-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .person-card {
+      text-align: center;
+      background: var(--card-bg);
+      padding: 1.25rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      transition: box-shadow 0.2s;
+    }
+    .person-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+    .person-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 30%;
+      margin: 0 auto 0.85rem;
+      display: block;
+      background: var(--accent-light);
+    }
+    .person-name {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      font-size: 1.05rem;
+    }
+    .person-name a { color: var(--text); text-decoration: none; }
+    .person-name a:hover { color: var(--accent); text-decoration: underline; }
+    .person-affil {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    .person-talk {
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+      line-height: 1.35;
+    }
+    .person-challenges {
+      font-size: 0.85rem;
+      color: var(--accent);
+      margin-top: 0.3rem;
+      font-weight: 500;
+    }
+    .challenge-tag {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 3px;
+      padding: 0.1rem 0.4rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin: 0.1rem 0.1rem 0 0;
+    }
+    .schedule-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 1rem 0;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--card-bg);
+      box-shadow: 0 6px 18px rgba(30,90,142,0.08);
+    }
+    .schedule-table th,
+    .schedule-table td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      font-size: 1rem;
+      vertical-align: top;
+    }
+    .schedule-table th {
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+    .schedule-table tbody tr:nth-child(even) { background: #f8fbfe; }
+    .schedule-table tbody tr:last-child td { border-bottom: 0; }
+    .schedule-table td.time {
+      white-space: nowrap;
+      color: var(--accent);
+      font-weight: 700;
+      width: 150px;
+    }
+    .schedule-table .highlight-row { background: var(--accent-light) !important; }
+    .schedule-table .highlight-row td {
+      border-top: 2px solid var(--accent);
+      border-bottom: 2px solid var(--accent);
+      font-weight: 600;
+    }
+    .corresponding-note { text-align: center; }
+    .footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 1rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    #schedule, #cfp, #speakers, #organizers, #submit { scroll-margin-top: 4rem; }
+    @media (max-width: 640px) {
+      .person-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+      .person-grid.organizers-grid { grid-template-columns: 1fr 1fr; }
+      .person-photo { width: 130px; height: 130px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <nav class="hero-nav">
+      <div class="hero-nav-center">
+        <div class="hero-nav-links">
+          <a href="#" class="active">Home</a>
+          <a href="#speakers">Speakers</a>
+          <a href="#schedule">Schedule</a>
+          <a href="#cfp">Call for Papers</a>
+          <a href="#organizers">Organizers</a>
+          <a href="#submit">Submit</a>
+        </div>
+      </div>
+    </nav>
+    <div class="hero-inner">
+      <div class="workshop-label">CoRL 2026 Workshop</div>
+      <div class="title-rule"></div>
+      <h1>Spatial Intelligence and Structured Reasoning for Embodied Navigation</h1>
+      <p class="tagline">SISREN</p>
+      <span class="badge">CoRL 2026</span>
+      <div class="hero-date">November 9th, 2026 &middot; Austin, TX</div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <h2>Description</h2>
+    <div class="abstract">
+      <p>Embodied navigation &mdash; the ability of autonomous agents to move purposefully through complex, unstructured environments &mdash; sits at the intersection of perception, cognition, and action. Despite significant progress driven by large-scale pretraining, state-of-the-art navigation systems still struggle with tasks that humans find straightforward: interpreting multi-step spatial instructions, reasoning about occluded regions, generalizing geometric priors across scene types, and composing spatial relations hierarchically. These gaps point to a fundamental challenge: current systems lack robust <em>spatial intelligence</em> &mdash; the capacity to form, manipulate, and exploit structured internal representations of the world for goal-directed locomotion.</p>
+      <p><code>SISREN</code> brings together researchers from robot learning, computer vision, cognitive science, and natural language processing to examine where spatial intelligence breaks down in embodied agents and how structured reasoning &mdash; for instance over maps, scene graphs, affordances, and language-grounded representations &mdash; can address these failures. The event is aimed at researchers and graduate students working on embodied navigation, scene understanding, and representation learning, and is especially relevant to the CoRL community's focus on deployable, generalizable robotic systems.</p>
+    </div>
+
+    <h2>Core Challenges / Research Questions</h2>
+    <p><code>SISREN</code> will focus on the following concrete, open research challenges:</p>
+    <ul>
+      <li><strong>C1. Spatial representation learning.</strong> What inductive biases, architectures, or training objectives lead to representations that support downstream spatial reasoning, rather than merely fitting perception benchmarks?</li>
+      <li><strong>C2. Compositional and long-horizon spatial reasoning.</strong> How can agents decompose complex spatial instructions (&ldquo;go past the chair, turn left at the hallway, stop in front of the blue door&rdquo;) into executable sub-goals, and how should the knowledge of a sub-task&rsquo;s failure propagate to subsequent tasks?</li>
+      <li><strong>C3. Generalizable cognitive maps.</strong> Can learned map representations transfer across environments with different geometry, semantic content, and sensor modalities? What is the right abstraction level (metric, topological, or semantic) for robust generalization?</li>
+      <li><strong>C4. Grounding language to spatial reasoning.</strong> How should language models interact with spatial representations? When is tight coupling beneficial; when does it introduce brittleness?</li>
+      <li><strong>C5. Uncertainty-aware navigation.</strong> How should agents represent and communicate uncertainty on spatial states, and how does structured reasoning improve decision-making under partial observability?</li>
+      <li><strong>C6. Evaluation methodology.</strong> Current benchmarks reward pattern matching rather than genuine spatial understanding. What evaluation protocols better distinguish structured reasoning from shortcut learning?</li>
+    </ul>
+
+    <h2 id="speakers">Invited Speakers</h2>
+    <p><em>All speakers confirmed.</em></p>
+    <div class="person-grid">
+      <div class="person-card">
+        <img class="person-photo" src="https://boleizhou.github.io/images/bolei.jpg" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22/%3E';this.style.background='%23e3eef6'">
+        <div class="person-name"><a href="https://boleizhou.github.io/" target="_blank" rel="noopener">Bolei Zhou</a></div>
+        <div class="person-affil">Associate Professor of Computer Science<br>UCLA</div>
+        <div class="person-talk">Visual representation learning, scene understanding, and spatially grounded foundation models.</div>
+        <div class="person-challenges">
+          <span class="challenge-tag">C1</span><span class="challenge-tag">C3</span><span class="challenge-tag">C4</span>
+        </div>
+      </div>
+      <div class="person-card">
+        <img class="person-photo" src="https://www.cs.umd.edu/~dmanocha/images/dinesh-new.jpg" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22/%3E';this.style.background='%23e3eef6'">
+        <div class="person-name"><a href="https://www.cs.umd.edu/~dmanocha/" target="_blank" rel="noopener">Dinesh Manocha</a></div>
+        <div class="person-affil">Distinguished Professor of Computer Science<br>University of Maryland</div>
+        <div class="person-talk">Navigation, simulation, crowd modeling, and physically grounded reasoning for autonomous systems.</div>
+        <div class="person-challenges">
+          <span class="challenge-tag">C5</span><span class="challenge-tag">C6</span>
+        </div>
+      </div>
+      <div class="person-card">
+        <img class="person-photo" src="https://jasonxyliu.github.io/img/profile_pic.jpg" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22/%3E';this.style.background='%23e3eef6'">
+        <div class="person-name"><a href="https://jasonxyliu.github.io/" target="_blank" rel="noopener">Jason Liu</a></div>
+        <div class="person-affil">Postdoctoral Fellow, Computer Science<br>MIT</div>
+        <div class="person-talk">Foundation models for structured reasoning, navigation, and interaction in physical environments.</div>
+        <div class="person-challenges">
+          <span class="challenge-tag">C2</span><span class="challenge-tag">C4</span>
+        </div>
+      </div>
+      <div class="person-card">
+        <img class="person-photo" src="https://lgan-arl.github.io/assets/img/lu_photo.jpg" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22/%3E';this.style.background='%23e3eef6'">
+        <div class="person-name"><a href="https://lgan-arl.github.io/" target="_blank" rel="noopener">Lu Gan</a></div>
+        <div class="person-affil">Assistant Professor of Aerospace Engineering<br>Georgia Institute of Technology</div>
+        <div class="person-talk">Visual localization, SLAM, 3D scene understanding, and spatial representation for embodied AI.</div>
+        <div class="person-challenges">
+          <span class="challenge-tag">C1</span><span class="challenge-tag">C3</span>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="schedule">Schedule</h2>
+    <p>Half-day workshop &middot; November 9th, 2026 &middot; Austin, TX</p>
+    <table class="schedule-table">
+      <thead>
+        <tr><th class="time">Time</th><th>Activity</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="time">TBD + 0:00</td>
+          <td><strong>Opening Remarks</strong> (15 min) &mdash; Workshop vision and overview of challenges C1&ndash;C6</td>
+        </tr>
+        <tr>
+          <td class="time">+ 0:15</td>
+          <td>
+            <strong>Invited Talk Block I</strong> (60 min &middot; 25 min talk + 5 min Q&amp;A each)<br>
+            &nbsp;&nbsp;&middot; <strong>Dinesh Manocha</strong> &mdash; C5 (Uncertainty-Aware Navigation), C6 (Evaluation of Spatial Intelligence)<br>
+            &nbsp;&nbsp;&middot; <strong>Bolei Zhou</strong> &mdash; C1 (Spatial Representation Learning), C3 (Cognitive Maps), C4 (Grounding Language)
+          </td>
+        </tr>
+        <tr>
+          <td class="time">+ 1:15</td>
+          <td><strong>Contributed Spotlight Session</strong> (30 min) &mdash; 5-minute spotlights from top-reviewed contributed papers engaging challenges C1&ndash;C6</td>
+        </tr>
+        <tr class="highlight-row">
+          <td class="time">+ 1:45</td>
+          <td><strong>Breakout Discussion</strong> (30 min) &mdash; Participant self-select into challenge groups: A: C1 &middot; B: C2&ndash;C3 &middot; C: C4 &middot; D: C5&ndash;C6. Each group produces a short summary for the panel.</td>
+        </tr>
+        <tr>
+          <td class="time">+ 2:15</td>
+          <td>
+            <strong>Invited Talk Block II</strong> (60 min &middot; 25 min talk + 5 min Q&amp;A each)<br>
+            &nbsp;&nbsp;&middot; <strong>Lu Gan</strong> &mdash; C1 (Spatial Representation Learning), C3 (Generalizable Cognitive Maps)<br>
+            &nbsp;&nbsp;&middot; <strong>Jason Liu</strong> &mdash; C2 (Compositional Spatial Reasoning), C4 (Grounding Language)
+          </td>
+        </tr>
+        <tr>
+          <td class="time">+ 3:15</td>
+          <td><strong>Panel Discussion &amp; Open Q&amp;A</strong> (30 min) &mdash; Moderated discussion with all invited speakers; synthesis of breakout findings across C1&ndash;C6</td>
+        </tr>
+        <tr class="highlight-row">
+          <td class="time">+ 3:45</td>
+          <td><strong>Poster Session &amp; Closing</strong> (30 min) &mdash; Poster presentations, live demos, networking, and identification of key open problems</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="cfp">Call for Papers</h2>
+    <p>We invite 2&ndash;4 page extended abstract submissions (plus references) on topics mapped to the six challenge areas above. Submissions are <strong>non-archival</strong> to allow dual submission with venue proceedings.</p>
+    <p>Topics of interest include, but are not limited to:</p>
+    <ul>
+      <li>Spatial representation learning: inductive biases, architectures, and training objectives for structured spatial understanding</li>
+      <li>Compositional and long-horizon reasoning: decomposition of complex instructions, sub-goal planning, failure propagation</li>
+      <li>Generalizable cognitive maps: metric, topological, and semantic map representations; cross-environment transfer</li>
+      <li>Language grounding: interaction between language models and spatial representations; tight vs. loose coupling tradeoffs</li>
+      <li>Uncertainty-aware navigation: uncertainty representation, communication, and decision-making under partial observability</li>
+      <li>Evaluation methodology: benchmarks and protocols that distinguish structured reasoning from shortcut learning</li>
+    </ul>
+    <p><strong>Review process.</strong> Each submission will receive at least two double-blind reviews from a program committee spanning robotics, computer vision, NLP, and cognitive science. At least three spotlight slots are reserved for junior researchers (graduate students or postdocs as first authors).</p>
+    <p><strong>Submission link:</strong> <a href="#submit">OpenReview portal coming soon</a></p>
+
+    <h2 id="organizers">Organizers</h2>
+    <p>Organizer details will be announced upon workshop acceptance.</p>
+
+    <h2 id="submit">Submit</h2>
+    <p>Paper submissions will be handled through OpenReview. The submission portal will be posted here once available.</p>
+
+    <footer class="footer">
+      <p><strong>SISREN</strong> &middot; Spatial Intelligence and Structured Reasoning for Embodied Navigation &middot; CoRL 2026 &middot; Austin, TX</p>
+    </footer>
+
+  </main>
+</body>
+</html>
