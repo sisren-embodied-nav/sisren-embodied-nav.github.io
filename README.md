@@ -11,7 +11,7 @@ The workshop examines where spatial intelligence breaks down in embodied agents 
 - **C5.** Uncertainty-aware navigation
 - **C6.** Evaluation methodology
 
-Date: **November 9, 2026**  
+Date: **November 12, 2026**  
 Location: **Austin, TX**
 
 Website: https://sisren-embodied-nav.github.io/

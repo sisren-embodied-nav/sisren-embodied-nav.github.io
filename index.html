@@ -152,12 +152,14 @@
       border-left: 4px solid var(--accent);
     }
     .person-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 1.75rem;
       margin: 1rem 0;
     }
     .person-grid.organizers-grid {
+      display: grid;
       grid-template-columns: repeat(3, 1fr);
     }
     .person-card {
@@ -167,6 +169,8 @@
       border-radius: 8px;
       border: 1px solid var(--border);
       transition: box-shadow 0.2s;
+      flex: 1 1 210px;
+      max-width: 260px;
     }
     .person-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
     .person-photo {
@@ -265,7 +269,7 @@
     }
     #schedule, #cfp, #speakers, #organizers, #submit { scroll-margin-top: 4rem; }
     @media (max-width: 640px) {
-      .person-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+      .person-card { flex-basis: 160px; }
       .person-grid.organizers-grid { grid-template-columns: 1fr 1fr; }
       .person-photo { width: 130px; height: 130px; }
     }
@@ -291,7 +295,7 @@
       <h1>Spatial Intelligence and Structured Reasoning for Embodied Navigation</h1>
       <p class="tagline">SISREN</p>
       <span class="badge">CoRL 2026</span>
-      <div class="hero-date">November 9th, 2026 &middot; Austin, TX</div>
+      <div class="hero-date">November 12th, 2026 &middot; Austin, TX</div>
     </div>
   </header>
 
@@ -356,7 +360,7 @@
     </div>
 
     <h2 id="schedule">Schedule</h2>
-    <p>Half-day workshop &middot; November 9th, 2026 &middot; Austin, TX</p>
+    <p>Half-day workshop &middot; November 12th, 2026 &middot; Austin, TX</p>
     <table class="schedule-table">
       <thead>
         <tr><th class="time">Time</th><th>Activity</th></tr>
