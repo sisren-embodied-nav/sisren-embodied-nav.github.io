@@ -34,16 +34,24 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      background: linear-gradient(180deg, rgba(15,25,35,0.72) 0%, rgba(20,35,45,0.68) 50%, rgba(15,30,40,0.78) 100%),
-                  url("https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1920px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg") center / cover no-repeat;
+      padding-top: 60px;
+      background: linear-gradient(180deg, rgba(10,18,28,0.55) 0%, rgba(15,28,40,0.5) 50%, rgba(10,22,32,0.65) 100%),
+                  url("assets/hero-bg.svg") center / cover no-repeat;
     }
-    .hero-nav {
-      position: relative;
-      z-index: 2;
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(8,16,24,0.88);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.08);
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 1rem 1.5rem;
+      padding: 0.6rem 1.5rem;
       flex-wrap: wrap;
       gap: 0.75rem;
     }
@@ -70,7 +78,7 @@
       border-radius: 2px;
     }
     .hero-nav-links a:hover { color: #fff; background: rgba(255,255,255,0.15); }
-    .hero-nav-links a.active { background: rgba(0,0,0,0.5); color: #fff; }
+    .hero-nav-links a.active { background: rgba(230,200,74,0.35); color: #fff; }
     .hero-inner {
       position: relative;
       z-index: 1;
@@ -258,7 +266,127 @@
       border-bottom: 2px solid var(--accent);
       font-weight: 600;
     }
+    .sched-title { font-weight: 700; font-size: 1.05rem; }
+    .sched-duration { color: var(--text-muted); font-size: 0.85rem; font-weight: 400; margin-left: 0.4rem; }
+    .sched-desc { margin-top: 0.3rem; color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
+    .sched-talks { margin-top: 0.6rem; }
+    .sched-talk {
+      padding: 0.5rem 0 0.5rem 0.75rem;
+      border-left: 3px solid var(--accent-light);
+      margin-bottom: 0.4rem;
+    }
+    .sched-talk:last-child { margin-bottom: 0; }
+    .sched-talk .speaker-name { font-weight: 600; }
+    .sched-talk .talk-title { color: var(--text-muted); font-style: italic; }
+    .sched-talk .challenge-tag { margin-top: 0.25rem; }
     .corresponding-note { text-align: center; }
+    .dates-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1rem 0 1.75rem;
+    }
+    .date-card {
+      flex: 1 1 180px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      border-radius: 10px;
+      padding: 1.1rem 1.3rem;
+      box-shadow: 0 6px 18px rgba(30,90,142,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .date-card:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(30,90,142,0.12); }
+    .date-card.emphasis { border-top-color: #e6c84a; }
+    .date-card .date-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+    .date-card .date-value {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1.2;
+    }
+    .date-card.emphasis .date-value { color: #96720a; }
+    .date-card .date-sub {
+      margin-top: 0.3rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    ul.topic-list {
+      list-style: none;
+      margin: 1rem 0 1.75rem;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    ul.topic-list li {
+      position: relative;
+      background: #fdf8e9;
+      border: 1px solid var(--border);
+      border-left: 5px solid #e6c84a;
+      border-radius: 6px;
+      padding: 1rem 1.15rem 1rem 1.3rem;
+      margin: 0;
+      transition: border-left-width 0.15s, padding-left 0.15s;
+    }
+    ul.topic-list li:hover {
+      border-left-width: 8px;
+      padding-left: 1.2rem;
+    }
+    ul.topic-list .topic-title {
+      display: inline-block;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      border-bottom: 2px solid #e6c84a;
+      padding-bottom: 0.25rem;
+    }
+    ul.topic-list .topic-desc {
+      display: block;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+    @media (max-width: 640px) {
+      ul.topic-list { grid-template-columns: 1fr; }
+    }
+    .spec-list {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 1.2rem 0;
+      background: var(--card-bg);
+      box-shadow: 0 8px 22px rgba(30,90,142,0.08);
+    }
+    .spec-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.25rem 1rem;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-row:nth-child(even) { background: #f8fbfe; }
+    .spec-row .spec-label {
+      flex: 0 0 165px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.01em;
+    }
+    .spec-row .spec-text { flex: 1 1 320px; color: var(--text); }
+    .spec-row.spec-highlight { background: var(--accent-light); }
+    .spec-row.spec-highlight .spec-label { color: #96720a; }
     .footer {
       margin-top: 3rem;
       padding-top: 1.5rem;
@@ -267,7 +395,7 @@
       color: var(--text-muted);
       text-align: center;
     }
-    #schedule, #cfp, #speakers, #organizers, #submit { scroll-margin-top: 4rem; }
+    #top, #schedule, #cfp, #speakers, #organizers, #submit { scroll-margin-top: 4rem; }
     @media (max-width: 640px) {
       .person-card { flex-basis: 160px; }
       .person-grid.organizers-grid { grid-template-columns: 1fr 1fr; }
@@ -276,25 +404,24 @@
   </style>
 </head>
 <body>
-  <header class="hero">
-    <nav class="hero-nav">
-      <div class="hero-nav-center">
-        <div class="hero-nav-links">
-          <a href="#" class="active">Home</a>
-          <a href="#speakers">Speakers</a>
-          <a href="#schedule">Schedule</a>
-          <a href="#cfp">Call for Papers</a>
-          <a href="#organizers">Organizers</a>
-          <a href="#submit">Submit</a>
-        </div>
+  <nav class="site-nav" id="site-nav">
+    <div class="hero-nav-center">
+      <div class="hero-nav-links">
+        <a href="#top" class="active" data-target="top">Home</a>
+        <a href="#speakers" data-target="speakers">Speakers</a>
+        <a href="#cfp" data-target="cfp">Call for Papers</a>
+        <a href="#submit" data-target="submit">Submit</a>
+        <a href="#schedule" data-target="schedule">Schedule</a>
+        <a href="#organizers" data-target="organizers">Organizers</a>
       </div>
-    </nav>
+    </div>
+  </nav>
+  <header class="hero" id="top">
     <div class="hero-inner">
-      <div class="workshop-label">CoRL 2026 Workshop</div>
+      <div class="workshop-label">CoRL Workshop on</div>
       <div class="title-rule"></div>
       <h1>Spatial Intelligence and Structured Reasoning for Embodied Navigation</h1>
-      <p class="tagline">SISREN</p>
-      <span class="badge">CoRL 2026</span>
+      <p class="tagline" style="color: #e6c84a;">SISREN</p>
       <div class="hero-date">November 12th, 2026 &middot; Austin, TX</div>
     </div>
   </header>
@@ -310,12 +437,12 @@
     <h2>Core Challenges / Research Questions</h2>
     <p><code>SISREN</code> will focus on the following concrete, open research challenges:</p>
     <ul>
-      <li><strong>C1. Spatial representation learning.</strong> What inductive biases, architectures, or training objectives lead to representations that support downstream spatial reasoning, rather than merely fitting perception benchmarks?</li>
-      <li><strong>C2. Compositional and long-horizon spatial reasoning.</strong> How can agents decompose complex spatial instructions (&ldquo;go past the chair, turn left at the hallway, stop in front of the blue door&rdquo;) into executable sub-goals, and how should the knowledge of a sub-task&rsquo;s failure propagate to subsequent tasks?</li>
-      <li><strong>C3. Generalizable cognitive maps.</strong> Can learned map representations transfer across environments with different geometry, semantic content, and sensor modalities? What is the right abstraction level (metric, topological, or semantic) for robust generalization?</li>
-      <li><strong>C4. Grounding language to spatial reasoning.</strong> How should language models interact with spatial representations? When is tight coupling beneficial; when does it introduce brittleness?</li>
-      <li><strong>C5. Uncertainty-aware navigation.</strong> How should agents represent and communicate uncertainty on spatial states, and how does structured reasoning improve decision-making under partial observability?</li>
-      <li><strong>C6. Evaluation methodology.</strong> Current benchmarks reward pattern matching rather than genuine spatial understanding. What evaluation protocols better distinguish structured reasoning from shortcut learning?</li>
+      <li><span class="challenge-tag">C1</span> <strong>Spatial representation learning.</strong> What inductive biases, architectures, or training objectives lead to representations that support downstream spatial reasoning, rather than merely fitting perception benchmarks?</li>
+      <li><span class="challenge-tag">C2</span> <strong>Compositional and long-horizon spatial reasoning.</strong> How can agents decompose complex spatial instructions (&ldquo;go past the chair, turn left at the hallway, stop in front of the blue door&rdquo;) into executable sub-goals, and how should the knowledge of a sub-task&rsquo;s failure propagate to subsequent tasks?</li>
+      <li><span class="challenge-tag">C3</span> <strong>Generalizable cognitive maps.</strong> Can learned map representations transfer across environments with different geometry, semantic content, and sensor modalities? What is the right abstraction level (metric, topological, or semantic) for robust generalization?</li>
+      <li><span class="challenge-tag">C4</span> <strong>Grounding language to spatial reasoning.</strong> How should language models interact with spatial representations? When is tight coupling beneficial; when does it introduce brittleness?</li>
+      <li><span class="challenge-tag">C5</span> <strong>Uncertainty-aware navigation.</strong> How should agents represent and communicate uncertainty on spatial states, and how does structured reasoning improve decision-making under partial observability?</li>
+      <li><span class="challenge-tag">C6</span> <strong>Evaluation methodology.</strong> Current benchmarks reward pattern matching rather than genuine spatial understanding. What evaluation protocols better distinguish structured reasoning from shortcut learning?</li>
     </ul>
 
     <h2 id="speakers">Invited Speakers</h2>
@@ -359,8 +486,72 @@
       </div>
     </div>
 
+    <h2 id="cfp">Call for Papers</h2>
+    <p>We invite contributed papers on topics mapped to the six challenge areas above. Submissions are <strong>non-archival</strong> to allow dual submission with venue proceedings.</p>
+
+    <h3>Important Dates</h3>
+    <div class="dates-row">
+      <div class="date-card">
+        <div class="date-label">Submission deadline</div>
+        <div class="date-value">Oct 20, 2026</div>
+        <div class="date-sub">11:59 pm AoE</div>
+      </div>
+      <div class="date-card">
+        <div class="date-label">Notification of results</div>
+        <div class="date-value">Oct 25, 2026</div>
+      </div>
+      <div class="date-card emphasis">
+        <div class="date-label">Workshop</div>
+        <div class="date-value">Nov 12, 2026</div>
+        <div class="date-sub">Austin, TX</div>
+      </div>
+    </div>
+
+    <h3>Topics of Interest</h3>
+    <p>Topics of interest include, but are not limited to:</p>
+    <ul class="topic-list">
+      <li><span class="topic-title">Spatial representation learning</span><span class="topic-desc">Inductive biases, architectures, and training objectives for structured spatial understanding</span></li>
+      <li><span class="topic-title">Compositional &amp; long-horizon reasoning</span><span class="topic-desc">Decomposition of complex instructions, sub-goal planning, failure propagation</span></li>
+      <li><span class="topic-title">Generalizable cognitive maps</span><span class="topic-desc">Metric, topological, and semantic map representations; cross-environment transfer</span></li>
+      <li><span class="topic-title">Language grounding</span><span class="topic-desc">Interaction between language models and spatial representations; tight vs. loose coupling tradeoffs</span></li>
+      <li><span class="topic-title">Uncertainty-aware navigation</span><span class="topic-desc">Uncertainty representation, communication, and decision-making under partial observability</span></li>
+      <li><span class="topic-title">Evaluation methodology</span><span class="topic-desc">Benchmarks and protocols that distinguish structured reasoning from shortcut learning</span></li>
+    </ul>
+
+    <h2 id="submit">Submit</h2>
+    <div class="spec-list">
+      <div class="spec-row">
+        <div class="spec-label">Length</div>
+        <div class="spec-text">2&ndash;4 page extended abstract or up to 8-page full paper (plus references). These page limits are suggestions rather than strict requirements.</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-label">Format</div>
+        <div class="spec-text">Submissions may use any paper template and must be anonymized for double-blind review. We recommend either the CoRL 2026 LaTeX template or the IEEE conference template.</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-label">Reviews</div>
+        <div class="spec-text">Each submission will receive at least two double-blind reviews from a program committee spanning robotics, computer vision, NLP, and cognitive science. At least three spotlight slots are reserved for junior researchers (graduate students or postdocs as first authors).</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-label">Presentation</div>
+        <div class="spec-text">Accepted submissions will be invited for a contributed spotlight talk and a poster presentation at the workshop.</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-label">Dual submission</div>
+        <div class="spec-text">Published work, and work submitted concurrently to other conferences or workshops (including CoRL and IROS), is welcome.</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-label">Non-archival</div>
+        <div class="spec-text">Accepted submissions will be made available on the workshop website as non-archival reports, allowing subsequent submission to conferences and journals.</div>
+      </div>
+      <div class="spec-row spec-highlight">
+        <div class="spec-label">Submission link</div>
+        <div class="spec-text">Paper submissions will be handled through OpenReview. The submission portal will be posted here once available. If you have any questions, do not hesitate to reach out to <a href="mailto:neel.bhatt@utdallas.edu">neel.bhatt@utdallas.edu</a>.</div>
+      </div>
+    </div>
+
     <h2 id="schedule">Schedule</h2>
-    <p>Half-day workshop &middot; November 12th, 2026 &middot; 2:00&ndash;6:00 PM &middot; Austin, TX</p>
+    <p>Afternoon workshop &middot; November 12th, 2026 &middot; 2:00&ndash;6:00 PM &middot; Austin, TX</p>
     <table class="schedule-table">
       <thead>
         <tr><th class="time">Time</th><th>Activity</th></tr>
@@ -368,67 +559,87 @@
       <tbody>
         <tr>
           <td class="time">2:00&ndash;2:05 PM</td>
-          <td><strong>Opening Remarks</strong> (5 min) &mdash; Workshop vision and overview of challenges C1&ndash;C6</td>
+          <td>
+            <span class="sched-title">Opening remarks</span><span class="sched-duration">5 min</span>
+            <div class="sched-desc">Workshop vision and overview of challenges <span class="challenge-tag">C1</span> &ndash; <span class="challenge-tag">C6</span></div>
+          </td>
         </tr>
         <tr>
           <td class="time">2:05&ndash;3:05 PM</td>
           <td>
-            <strong>Invited Talk Block I</strong> (60 min &middot; 25 min talk + 5 min Q&amp;A each)<br>
-            &nbsp;&nbsp;&middot; <strong>Dinesh Manocha</strong> &mdash; C5 (Uncertainty-Aware Navigation), C6 (Evaluation of Spatial Intelligence)<br>
-            &nbsp;&nbsp;&middot; <strong>Bolei Zhou</strong> &mdash; C3 (Cognitive Maps), C5 (Uncertainty-Aware Navigation), C6 (Evaluation of Spatial Intelligence)
+            <span class="sched-title">Invited talk block I</span><span class="sched-duration">60 min &middot; 25 min talk + 5 min Q&amp;A each</span>
+            <div class="sched-talks">
+              <div class="sched-talk">
+                <span class="speaker-name">Dinesh Manocha</span> &mdash; <span class="talk-title">&ldquo;Beyond Pixels and Prompts: Scaling Physical, Social, and Adversarial Safety in Vision-Language-Action Navigation&rdquo;</span>
+                <div><span class="challenge-tag">C5</span><span class="challenge-tag">C6</span></div>
+              </div>
+              <div class="sched-talk">
+                <span class="speaker-name">Bolei Zhou</span> &mdash; <span class="talk-title">&ldquo;Scaling Long-Horizon Sidewalk Navigation: From Fleet Data and Human Interventions to World Models&rdquo;</span>
+                <div><span class="challenge-tag">C3</span><span class="challenge-tag">C5</span><span class="challenge-tag">C6</span></div>
+              </div>
+            </div>
           </td>
         </tr>
         <tr>
           <td class="time">3:05&ndash;3:30 PM</td>
-          <td><strong>Contributed Spotlight Session</strong> (25 min) &mdash; 5-minute spotlights from top-reviewed contributed papers engaging challenges C1&ndash;C6</td>
+          <td>
+            <span class="sched-title">Contributed spotlight session</span><span class="sched-duration">25 min</span>
+            <div class="sched-desc">5-minute spotlights from top-reviewed contributed papers engaging challenges <span class="challenge-tag">C1</span> &ndash; <span class="challenge-tag">C6</span></div>
+          </td>
         </tr>
         <tr class="highlight-row">
           <td class="time">3:30&ndash;4:00 PM</td>
-          <td><strong>Afternoon Coffee Break</strong> (30 min) &mdash; Refreshments and informal discussion</td>
+          <td>
+            <span class="sched-title">Afternoon coffee break</span><span class="sched-duration">30 min</span>
+            <div class="sched-desc">Refreshments and informal discussion.</div>
+          </td>
         </tr>
         <tr>
           <td class="time">4:00&ndash;4:20 PM</td>
-          <td><strong>Breakout Discussion</strong> (20 min) &mdash; Participant self-select into challenge groups: A: C1 &middot; B: C2&ndash;C3 &middot; C: C4 &middot; D: C5&ndash;C6. Each group produces a short summary for the panel.</td>
+          <td>
+            <span class="sched-title">Breakout discussion</span><span class="sched-duration">20 min</span>
+            <div class="sched-desc">Participants self-select into challenge groups &mdash; A: <span class="challenge-tag">C1</span> &middot; B: <span class="challenge-tag">C2</span><span class="challenge-tag">C3</span> &middot; C: <span class="challenge-tag">C4</span> &middot; D: <span class="challenge-tag">C5</span><span class="challenge-tag">C6</span>. Each group produces a short summary for the panel.</div>
+          </td>
         </tr>
         <tr>
           <td class="time">4:20&ndash;5:20 PM</td>
           <td>
-            <strong>Invited Talk Block II</strong> (60 min &middot; 25 min talk + 5 min Q&amp;A each)<br>
-            &nbsp;&nbsp;&middot; <strong>Lu Gan</strong> &mdash; C1 (Spatial Representation Learning), C3 (Generalizable Cognitive Maps)<br>
-            &nbsp;&nbsp;&middot; <strong>Jason Liu</strong> &mdash; C2 (Compositional Spatial Reasoning), C4 (Grounding Language)
+            <span class="sched-title">Invited talk block II</span><span class="sched-duration">60 min &middot; 25 min talk + 5 min Q&amp;A each</span>
+            <div class="sched-talks">
+              <div class="sched-talk">
+                <span class="speaker-name">Lu Gan</span> &mdash; <span class="talk-title">&ldquo;Open-Vocabulary, Embodiment-Aware Maps for Navigation in the Wild&rdquo;</span>
+                <div><span class="challenge-tag">C1</span><span class="challenge-tag">C3</span></div>
+              </div>
+              <div class="sched-talk">
+                <span class="speaker-name">Jason Liu</span> &mdash; <span class="talk-title">&ldquo;Robotic Language Grounding through Spatiotemporal Reasoning&rdquo;</span>
+                <div><span class="challenge-tag">C2</span><span class="challenge-tag">C4</span></div>
+              </div>
+            </div>
           </td>
         </tr>
         <tr>
           <td class="time">5:20&ndash;5:40 PM</td>
-          <td><strong>Panel Discussion &amp; Open Q&amp;A</strong> (20 min) &mdash; Moderated discussion with all invited speakers; synthesis of breakout findings across C1&ndash;C6</td>
+          <td>
+            <span class="sched-title">Panel discussion &amp; open Q&amp;A</span><span class="sched-duration">20 min</span>
+            <div class="sched-desc">Moderated discussion with all invited speakers; synthesis of breakout findings across <span class="challenge-tag">C1</span> &ndash; <span class="challenge-tag">C6</span></div>
+          </td>
         </tr>
         <tr class="highlight-row">
           <td class="time">5:40&ndash;6:00 PM</td>
-          <td><strong>Poster Session &amp; Closing</strong> (20 min) &mdash; Poster presentations, live demos, networking, and identification of key open problems</td>
+          <td>
+            <span class="sched-title">Poster session &amp; closing</span><span class="sched-duration">20 min</span>
+            <div class="sched-desc">Poster presentations, live demos, networking, and identification of key open problems.</div>
+          </td>
         </tr>
       </tbody>
     </table>
-
-    <h2 id="cfp">Call for Papers</h2>
-    <p>We invite 2&ndash;4 page extended abstract submissions (plus references) on topics mapped to the six challenge areas above. Submissions are <strong>non-archival</strong> to allow dual submission with venue proceedings.</p>
-    <p>Topics of interest include, but are not limited to:</p>
-    <ul>
-      <li>Spatial representation learning: inductive biases, architectures, and training objectives for structured spatial understanding</li>
-      <li>Compositional and long-horizon reasoning: decomposition of complex instructions, sub-goal planning, failure propagation</li>
-      <li>Generalizable cognitive maps: metric, topological, and semantic map representations; cross-environment transfer</li>
-      <li>Language grounding: interaction between language models and spatial representations; tight vs. loose coupling tradeoffs</li>
-      <li>Uncertainty-aware navigation: uncertainty representation, communication, and decision-making under partial observability</li>
-      <li>Evaluation methodology: benchmarks and protocols that distinguish structured reasoning from shortcut learning</li>
-    </ul>
-    <p><strong>Review process.</strong> Each submission will receive at least two double-blind reviews from a program committee spanning robotics, computer vision, NLP, and cognitive science. At least three spotlight slots are reserved for junior researchers (graduate students or postdocs as first authors).</p>
-    <p><strong>Submission link:</strong> <a href="https://openreview.net/group?id=robot-learning.org/CoRL/2026/Workshop/SISREN" target="_blank" rel="noopener">OpenReview submission portal</a></p>
 
     <h2 id="organizers">Organizers</h2>
     <div class="person-grid organizers-grid">
       <div class="person-card">
         <img class="person-photo" src="https://autonomy.oden.utexas.edu/sites/default/files/styles/utexas_image_style_500w_500h/public/2025-11/Oden_Profile_Photo_v2.jpg?itok=X6joiAFm" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22/%3E';this.style.background='%23e3eef6'">
         <div class="person-name">Neel P. Bhatt</div>
-        <div class="person-affil">University of Texas at Austin</div>
+        <div class="person-affil">University of Texas at Dallas</div>
       </div>
       <div class="person-card">
         <img class="person-photo" src="https://www.dcist-cra.org/wp-content/uploads/2024/09/dhruvshah_2024_formal.jpg" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22/%3E';this.style.background='%23e3eef6'">
@@ -442,12 +653,52 @@
       </div>
     </div>
 
-    <h2 id="submit">Submit</h2>
-    <p>Paper submissions will be handled through OpenReview: <a href="https://openreview.net/group?id=robot-learning.org/CoRL/2026/Workshop/SISREN" target="_blank" rel="noopener">openreview.net/group?id=robot-learning.org/CoRL/2026/Workshop/SISREN</a>. If you have any questions, do not hesitate to reach out to <a href="mailto:npbhatt@utexas.edu">npbhatt@utexas.edu</a>.</p>
-    
+    <footer class="footer">
       <p><strong>SISREN</strong> &middot; Spatial Intelligence and Structured Reasoning for Embodied Navigation &middot; CoRL 2026 &middot; Austin, TX</p>
     </footer>
 
   </main>
+
+  <script>
+    (function () {
+      var links = Array.prototype.slice.call(document.querySelectorAll('.hero-nav-links a'));
+      var targets = links
+        .map(function (link) {
+          var id = link.getAttribute('data-target');
+          var el = document.getElementById(id);
+          return el ? { link: link, el: el } : null;
+        })
+        .filter(Boolean);
+
+      function setActive() {
+        var navHeight = document.getElementById('site-nav').offsetHeight;
+        var pos = window.scrollY + navHeight + 8;
+        var current = targets[0];
+        for (var i = 0; i < targets.length; i++) {
+          if (targets[i].el.offsetTop <= pos) {
+            current = targets[i];
+          }
+        }
+        var atBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 2;
+        if (atBottom) current = targets[targets.length - 1];
+        targets.forEach(function (t) {
+          t.link.classList.toggle('active', t === current);
+        });
+      }
+
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          window.requestAnimationFrame(function () {
+            setActive();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+      window.addEventListener('resize', setActive);
+      setActive();
+    })();
+  </script>
 </body>
 </html>
