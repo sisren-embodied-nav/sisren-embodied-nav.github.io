@@ -395,7 +395,104 @@
       color: var(--text-muted);
       text-align: center;
     }
-    #top, #schedule, #cfp, #speakers, #organizers, #submit { scroll-margin-top: 4rem; }
+    .placeholder-note {
+      color: var(--text-muted);
+      font-style: italic;
+      background: var(--card-bg);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.4rem;
+      margin: 1rem 0 1.75rem;
+    }
+    .paper-list {
+      list-style: none;
+      margin: 1rem 0 0;
+      padding: 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--card-bg);
+      box-shadow: 0 8px 22px rgba(30,90,142,0.08);
+      min-height: 18rem;
+      opacity: 1;
+      transition: opacity 0.45s ease;
+    }
+    .paper-list.is-fading {
+      opacity: 0;
+    }
+    .paper-list li {
+      margin: 0;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .paper-list li.is-hidden { display: none; }
+    .paper-list li.is-visible-last { border-bottom: none; }
+    .paper-list li.is-stripe { background: #f8fbfe; }
+    .paper-list .paper-title {
+      display: block;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+      line-height: 1.4;
+      margin-bottom: 0.25rem;
+    }
+    .paper-list .paper-num {
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .paper-list .paper-title:hover { text-decoration: underline; }
+    .paper-list .paper-authors {
+      display: block;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.45;
+    }
+    .paper-pager {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      margin: 0.85rem 0 1.75rem;
+    }
+    .paper-pager .paper-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: 0;
+      padding: 0;
+      background: var(--border);
+      cursor: pointer;
+    }
+    .paper-pager .paper-dot.is-active {
+      background: var(--accent);
+    }
+    .logistics-list {
+      list-style: none;
+      margin: 1rem 0 1.75rem;
+      padding: 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--card-bg);
+      box-shadow: 0 8px 22px rgba(30,90,142,0.08);
+    }
+    .logistics-list li {
+      margin: 0;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 1rem;
+    }
+    .logistics-list li:last-child { border-bottom: none; }
+    .logistics-list li:nth-child(even) { background: #f8fbfe; }
+    .logistics-list .log-label {
+      flex: 0 0 140px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .logistics-list .log-text { flex: 1 1 320px; }
+    #top, #schedule, #speakers, #papers, #logistics, #cfp, #submit, #organizers { scroll-margin-top: 4rem; }
     @media (max-width: 640px) {
       .person-card { flex-basis: 160px; }
       .person-grid.organizers-grid { grid-template-columns: 1fr 1fr; }
@@ -408,10 +505,11 @@
     <div class="hero-nav-center">
       <div class="hero-nav-links">
         <a href="#top" class="active" data-target="top">Home</a>
-        <a href="#speakers" data-target="speakers">Speakers</a>
-        <a href="#cfp" data-target="cfp">Call for Papers</a>
-        <a href="#submit" data-target="submit">Submit</a>
         <a href="#schedule" data-target="schedule">Schedule</a>
+        <a href="#speakers" data-target="speakers">Speakers</a>
+        <a href="#papers" data-target="papers">Accepted Papers</a>
+        <a href="#logistics" data-target="logistics">Logistics</a>
+        <a href="#cfp" data-target="cfp">Call for Papers</a>
         <a href="#organizers" data-target="organizers">Organizers</a>
       </div>
     </div>
@@ -422,7 +520,7 @@
       <div class="title-rule"></div>
       <h1>Spatial Intelligence and Structured Reasoning for Embodied Navigation</h1>
       <p class="tagline" style="color: #e6c84a;">SISREN</p>
-      <div class="hero-date">November 12th, 2026 &middot; Austin, TX</div>
+      <div class="hero-date">November 12th, 2026 &middot; Room 306, JW Marriott Austin</div>
     </div>
   </header>
 
@@ -445,113 +543,8 @@
       <li><span class="challenge-tag">C6</span> <strong>Evaluation methodology.</strong> Current benchmarks reward pattern matching rather than genuine spatial understanding. What evaluation protocols better distinguish structured reasoning from shortcut learning?</li>
     </ul>
 
-    <h2 id="speakers">Invited Speakers</h2>
-    <p><em>All speakers confirmed.</em></p>
-    <div class="person-grid">
-      <div class="person-card">
-        <img class="person-photo" src="https://www.ae.gatech.edu/sites/default/files/styles/gtcoe_max/public/profile/2023/09/headshot_lugan.webp?itok=PWplTOLv" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22/%3E';this.style.background='%23e3eef6'">
-        <div class="person-name"><a href="https://lgan-arl.github.io/" target="_blank" rel="noopener">Lu Gan</a></div>
-        <div class="person-affil">Assistant Professor of Aerospace Engineering<br>Georgia Institute of Technology</div>
-        <div class="person-talk">&ldquo;Open-Vocabulary, Embodiment-Aware Maps for Navigation in the Wild&rdquo;</div>
-        <div class="person-challenges">
-          <span class="challenge-tag">C1</span><span class="challenge-tag">C3</span>
-        </div>
-      </div>
-      <div class="person-card">
-        <img class="person-photo" src="https://jasonxyliu.github.io/img/profile_pic.jpg" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22/%3E';this.style.background='%23e3eef6'">
-        <div class="person-name"><a href="https://jasonxyliu.github.io/" target="_blank" rel="noopener">Jason Liu</a></div>
-        <div class="person-affil">Postdoctoral Fellow, Computer Science<br>MIT</div>
-        <div class="person-talk">&ldquo;Robotic Language Grounding through Spatiotemporal Reasoning&rdquo;</div>
-        <div class="person-challenges">
-          <span class="challenge-tag">C2</span><span class="challenge-tag">C4</span>
-        </div>
-      </div>
-      <div class="person-card">
-        <img class="person-photo" src="https://www.cs.umd.edu/sites/default/files/styles/medium/public/images/userpictures/dm2018-face.jpg?itok=wwxP9awz&c=5e78df7bb2c9fdf76c715ab0fc275068" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22/%3E';this.style.background='%23e3eef6'">
-        <div class="person-name"><a href="https://www.cs.umd.edu/~dmanocha/" target="_blank" rel="noopener">Dinesh Manocha</a></div>
-        <div class="person-affil">Distinguished Professor of Computer Science<br>University of Maryland</div>
-        <div class="person-talk">&ldquo;Beyond Pixels and Prompts: Scaling Physical, Social, and Adversarial Safety in Vision-Language-Action Navigation&rdquo;</div>
-        <div class="person-challenges">
-          <span class="challenge-tag">C5</span><span class="challenge-tag">C6</span>
-        </div>
-      </div>
-      <div class="person-card">
-        <img class="person-photo" src="https://boleizhou.github.io/assets/img/prof_pic.jpg" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22/%3E';this.style.background='%23e3eef6'">
-        <div class="person-name"><a href="https://boleizhou.github.io/" target="_blank" rel="noopener">Bolei Zhou</a></div>
-        <div class="person-affil">Associate Professor of Computer Science<br>UCLA</div>
-        <div class="person-talk">&ldquo;Scaling Long-Horizon Sidewalk Navigation: From Fleet Data and Human Interventions to World Models&rdquo;</div>
-        <div class="person-challenges">
-          <span class="challenge-tag">C3</span><span class="challenge-tag">C5</span><span class="challenge-tag">C6</span>
-        </div>
-      </div>
-    </div>
-
-    <h2 id="cfp">Call for Papers</h2>
-    <p>We invite contributed papers on topics mapped to the six challenge areas above. Submissions are <strong>non-archival</strong> to allow dual submission with venue proceedings.</p>
-
-    <h3>Important Dates</h3>
-    <div class="dates-row">
-      <div class="date-card emphasis">
-        <div class="date-label">Submission deadline</div>
-        <div class="date-value">Oct 20, 2026</div>
-        <div class="date-sub">11:59 pm AoE</div>
-      </div>
-      <div class="date-card">
-        <div class="date-label">Notification of results</div>
-        <div class="date-value">Oct 25, 2026</div>
-      </div>
-      <div class="date-card">
-        <div class="date-label">Workshop</div>
-        <div class="date-value">Nov 12, 2026</div>
-        <div class="date-sub">Austin, TX</div>
-      </div>
-    </div>
-
-    <h3>Topics of Interest</h3>
-    <p>Topics of interest include, but are not limited to:</p>
-    <ul class="topic-list">
-      <li><span class="topic-title">Spatial representation learning</span><span class="topic-desc">Inductive biases, architectures, and training objectives for structured spatial understanding</span></li>
-      <li><span class="topic-title">Compositional &amp; long-horizon reasoning</span><span class="topic-desc">Decomposition of complex instructions, sub-goal planning, failure propagation</span></li>
-      <li><span class="topic-title">Generalizable cognitive maps</span><span class="topic-desc">Metric, topological, and semantic map representations; cross-environment transfer</span></li>
-      <li><span class="topic-title">Language grounding</span><span class="topic-desc">Interaction between language models and spatial representations; tight vs. loose coupling tradeoffs</span></li>
-      <li><span class="topic-title">Uncertainty-aware navigation</span><span class="topic-desc">Uncertainty representation, communication, and decision-making under partial observability</span></li>
-      <li><span class="topic-title">Evaluation methodology</span><span class="topic-desc">Benchmarks and protocols that distinguish structured reasoning from shortcut learning</span></li>
-    </ul>
-
-    <h2 id="submit">Submit</h2>
-    <div class="spec-list">
-      <div class="spec-row">
-        <div class="spec-label">Length</div>
-        <div class="spec-text">2&ndash;4 page extended abstract or up to 8-page full paper (plus references). These page limits are suggestions rather than strict requirements.</div>
-      </div>
-      <div class="spec-row">
-        <div class="spec-label">Format</div>
-        <div class="spec-text">Submissions may use any paper template and must be anonymized for double-blind review. We recommend either the CoRL 2026 LaTeX template or the IEEE conference template.</div>
-      </div>
-      <div class="spec-row">
-        <div class="spec-label">Reviews</div>
-        <div class="spec-text">Each submission will receive at least two double-blind reviews from a program committee spanning robotics, computer vision, NLP, and cognitive science. At least three spotlight slots are reserved for junior researchers (graduate students or postdocs as first authors).</div>
-      </div>
-      <div class="spec-row">
-        <div class="spec-label">Presentation</div>
-        <div class="spec-text">Accepted submissions will be invited for a contributed spotlight talk and a poster presentation at the workshop.</div>
-      </div>
-      <div class="spec-row">
-        <div class="spec-label">Dual submission</div>
-        <div class="spec-text">Published work, and work submitted concurrently to other conferences or workshops (including CoRL and IROS), is welcome.</div>
-      </div>
-      <div class="spec-row">
-        <div class="spec-label">Non-archival</div>
-        <div class="spec-text">Accepted submissions will be made available on the workshop website as non-archival reports, allowing subsequent submission to conferences and journals.</div>
-      </div>
-      <div class="spec-row spec-highlight">
-        <div class="spec-label">Submission link</div>
-        <div class="spec-text">Paper submissions will be handled through <a href="https://openreview.net/group?id=robot-learning.org/CoRL/2026/Workshop/SISREN" target="_blank" rel="noopener">OpenReview</a>. If you have any questions, do not hesitate to reach out to <a href="mailto:neel.bhatt@utdallas.edu">neel.bhatt@utdallas.edu</a>.</div>
-      </div>
-    </div>
-
     <h2 id="schedule">Schedule</h2>
-    <p>Afternoon workshop &middot; November 12th, 2026 &middot; 2:00&ndash;6:00 PM &middot; Austin, TX</p>
+    <p>Afternoon workshop &middot; November 12th, 2026 &middot; 2:00&ndash;6:00 PM &middot; Room 306, JW Marriott Austin</p>
     <table class="schedule-table">
       <thead>
         <tr><th class="time">Time</th><th>Activity</th></tr>
@@ -584,7 +577,7 @@
           <td class="time">3:05&ndash;3:30 PM</td>
           <td>
             <span class="sched-title">Contributed spotlight session</span><span class="sched-duration">25 min</span>
-            <div class="sched-desc">5-minute spotlights from top-reviewed contributed papers engaging challenges <span class="challenge-tag">C1</span> &ndash; <span class="challenge-tag">C6</span></div>
+            <div class="sched-desc">Five 5-minute spotlights from top-reviewed contributed papers engaging challenges <span class="challenge-tag">C1</span> &ndash; <span class="challenge-tag">C6</span></div>
           </td>
         </tr>
         <tr class="highlight-row">
@@ -633,6 +626,276 @@
         </tr>
       </tbody>
     </table>
+
+    <h2 id="speakers">Invited Speakers</h2>
+    <p><em>All speakers confirmed.</em></p>
+    <div class="person-grid">
+      <div class="person-card">
+        <img class="person-photo" src="https://www.ae.gatech.edu/sites/default/files/styles/gtcoe_max/public/profile/2023/09/headshot_lugan.webp?itok=PWplTOLv" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22/%3E';this.style.background='%23e3eef6'">
+        <div class="person-name"><a href="https://lgan-arl.github.io/" target="_blank" rel="noopener">Lu Gan</a></div>
+        <div class="person-affil">Assistant Professor of Aerospace Engineering<br>Georgia Institute of Technology</div>
+        <div class="person-talk">&ldquo;Open-Vocabulary, Embodiment-Aware Maps for Navigation in the Wild&rdquo;</div>
+        <div class="person-challenges">
+          <span class="challenge-tag">C1</span><span class="challenge-tag">C3</span>
+        </div>
+      </div>
+      <div class="person-card">
+        <img class="person-photo" src="https://jasonxyliu.github.io/img/profile_pic.jpg" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22/%3E';this.style.background='%23e3eef6'">
+        <div class="person-name"><a href="https://jasonxyliu.github.io/" target="_blank" rel="noopener">Jason Liu</a></div>
+        <div class="person-affil">Postdoctoral Fellow, Computer Science<br>MIT</div>
+        <div class="person-talk">&ldquo;Robotic Language Grounding through Spatiotemporal Reasoning&rdquo;</div>
+        <div class="person-challenges">
+          <span class="challenge-tag">C2</span><span class="challenge-tag">C4</span>
+        </div>
+      </div>
+      <div class="person-card">
+        <img class="person-photo" src="https://www.cs.umd.edu/sites/default/files/styles/medium/public/images/userpictures/dm2018-face.jpg?itok=wwxP9awz&c=5e78df7bb2c9fdf76c715ab0fc275068" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22/%3E';this.style.background='%23e3eef6'">
+        <div class="person-name"><a href="https://www.cs.umd.edu/~dmanocha/" target="_blank" rel="noopener">Dinesh Manocha</a></div>
+        <div class="person-affil">Distinguished Professor of Computer Science<br>University of Maryland</div>
+        <div class="person-talk">&ldquo;Beyond Pixels and Prompts: Scaling Physical, Social, and Adversarial Safety in Vision-Language-Action Navigation&rdquo;</div>
+        <div class="person-challenges">
+          <span class="challenge-tag">C5</span><span class="challenge-tag">C6</span>
+        </div>
+      </div>
+      <div class="person-card">
+        <img class="person-photo" src="https://boleizhou.github.io/assets/img/prof_pic.jpg" alt="" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22/%3E';this.style.background='%23e3eef6'">
+        <div class="person-name"><a href="https://boleizhou.github.io/" target="_blank" rel="noopener">Bolei Zhou</a></div>
+        <div class="person-affil">Associate Professor of Computer Science<br>UCLA</div>
+        <div class="person-talk">&ldquo;Scaling Long-Horizon Sidewalk Navigation: From Fleet Data and Human Interventions to World Models&rdquo;</div>
+        <div class="person-challenges">
+          <span class="challenge-tag">C3</span><span class="challenge-tag">C5</span><span class="challenge-tag">C6</span>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="papers">Accepted Papers</h2>
+    <ol class="paper-list">
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=zvufLL3XCx" target="_blank" rel="noopener">Iterative Reasoning About Clues that Matter for Navigation</a>
+        <span class="paper-authors">Arthur Zhang, Carl Qi, Donne Su, Xiangyun Meng, Amy Zhang, Joydeep Biswas</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=tcyiiYS74c" target="_blank" rel="noopener">If, Then, Otherwise: Diagnosing Conditional Branching in Vision-Language Navigation</a>
+        <span class="paper-authors">Seoyoung Lee, Neel P. Bhatt, Pranay Samineni, S P Sharan, Cong Liu, Timothy Barclay, Gregory M Wagner, Daniel Milan, Sandeep P. Chinchali, Ufuk Topcu, Zhangyang Wang</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=tPVMyh9d2u" target="_blank" rel="noopener">Beyond Individual Intelligence: Learning Adaptive Multi-Robot Navigation</a>
+        <span class="paper-authors">Zihao Deng, Qianhuang Li, Maggie Wigness, John G. Rogers III, Peng Gao, Hao Zhang</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=rgHBhalQo6" target="_blank" rel="noopener">VLD: Visual Learned Distance as an Interface for Reinforcement Learning Navigation</a>
+        <span class="paper-authors">Lazar Milikic, Manthan Patel, Jonas Frey</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=qo2EfhE1LF" target="_blank" rel="noopener">Superpixels as Terrain Tokens: An Oversegmented Representation for Foothold Planning and Learned Tracking Control</a>
+        <span class="paper-authors">Max T Asselmeier, Ye Zhao, Patricio Vela</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=qn42W8rV8Q" target="_blank" rel="noopener">On the Surprising Effectiveness of Curriculum RL for Social Navigation with Sparse Human Localization</a>
+        <span class="paper-authors">Siva Kailas, Gunjan Chhablani, Andrew Wong, Zsolt Kira, Harish Ravichandar</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=q29r4OYkTc" target="_blank" rel="noopener">Knowing Where to Go: Generalizing Mobile Manipulation to Unseen Environments from a Single Video</a>
+        <span class="paper-authors">Albert Wilcox, Carl Brander, Isar Meijer, Animesh Garg, Marc Pollefeys, Oier Mees</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=pcIuYgpvv0" target="_blank" rel="noopener">DrivingBench: Can Vision-Language Models Drive a Toyota Corolla?</a>
+        <span class="paper-authors">Aditya Ramabadran, Simon Mahns, Tobias Gessler</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=paRG7TZms6" target="_blank" rel="noopener">Anytime Spatio-Semantic 3D Grounding for Online Navigation</a>
+        <span class="paper-authors">Andrew Jong, Omar Alama, Junyang Zhang, Lihong Jin, Muhammad Fadhil Ginting, Andrzej Marek Reinke, Ali Agha, Sebastian Scherer, Wenshan Wang</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=mweU2RzXEK" target="_blank" rel="noopener">WayTrace: A Map-to-Language-to-Trace Hierarchy for Embodied Urban Navigation</a>
+        <span class="paper-authors">Manthan Patel, Jonas Frey, Pascal Roth, Cesar Cadena, Marco Hutter</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=lz1by84ONA" target="_blank" rel="noopener">The Constitutional Controller: Doubt-Calibrated Steering of Compliant Agents</a>
+        <span class="paper-authors">Simon Kohaut, Felix Divo, Navid Hamid, Benedict Flade, Julian Eggert, Devendra Singh Dhami, Kristian Kersting</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=iNJJ1DBD5C" target="_blank" rel="noopener">RangeNav: Task-Aligned LiDAR Range-Image Pretraining for Robot Navigation</a>
+        <span class="paper-authors">Samuel Foo Enze, Manthan Patel, Fan Yang, Marco Hutter, Cesar Cadena</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=iDQBV5iGYO" target="_blank" rel="noopener">CoopUQ: Robust Multi-Robot Social Navigation via Uncertainty-Aware Cooperative Forecasting</a>
+        <span class="paper-authors">Zehao Wang, Jianpeng Yao, Yuping Wang, Yiping Li, Jiaqi Li, Zhixu Li, Kanghoon Lee, Jinfeng Wang, Cong Liu, Zhaowei Tan, Jinkyoo Park, Jiachen Li</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=gQnCHUvNCv" target="_blank" rel="noopener">Surfing the Wavelets: Multiresolution Online Feature Mapping for Scalable Open-Vocabulary 3D Perception</a>
+        <span class="paper-authors">Junwoon Lee, Carlos Nieto-Granda, Yulun Tian</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=cZqeoo0Tlt" target="_blank" rel="noopener">The Surprising Spatial Awareness of a Frontier VLM in Drone Piloting Tasks</a>
+        <span class="paper-authors">Vineet Pasumarti, Antonio Loquercio</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=at9Og3FNls" target="_blank" rel="noopener">Trajectory Prediction Meets Large Language Models: A Survey</a>
+        <span class="paper-authors">Yi Xu, Ruining Yang, Yitian Zhang, Jianglin Lu, Mingyuan Zhang, Yizhou Wang, Yixiao Chen</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=Z9cA0ICBYN" target="_blank" rel="noopener">Hierarchical Implicit Grids for Geometry-Aware Language Grounding</a>
+        <span class="paper-authors">Hanwen Cao, Wu Wenqiang, Kuang-Ting Tu, Mathias Otnes, Jeffrey Delmerico, Rui Wang, Yulun Tian, Nikolay Atanasov</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=YXWIvHTava" target="_blank" rel="noopener">Does Navigation Fine-Tuning Increase Ego-Motion Decodability in VLA Hidden States?</a>
+        <span class="paper-authors">Wenjun Cheng, Behrad Rabiei, Yue Hu, Yulun Tian</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=XgDQLkYiL8" target="_blank" rel="noopener">MobileVISTA: Generative Data Augmentation for Pose Generalization in Mobile Manipulation</a>
+        <span class="paper-authors">Suzannah Wistreich, Stephen Tian, Isabella Huang, Vitor Campagnolo Guizilini, Sergey Zakharov, Katherine Liu, Jiajun Wu</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=WMqN9js61K" target="_blank" rel="noopener">TrackletNav: Real-world Topological Navigation with Long-Term Capability in Complex Outdoor Scenes</a>
+        <span class="paper-authors">Xu Zhang, Sungsu Kim, Rooholla Khorrambakht, Minghao Wang, Chen Feng, Jing Zhang, Ludovic Righetti</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=WENinUeiLT" target="_blank" rel="noopener">HINT-VLM: Humanoid Interactive Navigation over Rough Terrain with Embodiment-Grounded Vision Language Model</a>
+        <span class="paper-authors">Ziwon Yoon, SeokHwan Kim, Quan Nguyen, Lu Gan, Ye Zhao</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=OGMnjSSHu1" target="_blank" rel="noopener">MessyMem: Learning-from-Doing Memory for Mobile Manipulation</a>
+        <span class="paper-authors">Anuva Banwasi, William Muckelroy III, Priya Sundaresan, Linfeng Zhao, Jeannette Bohg, Cherie Ho</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=GlKHGjQAE2" target="_blank" rel="noopener">MoMa-NMP: Scene-Scale Neural Motion Planning for Mobile Manipulators</a>
+        <span class="paper-authors">Adam Kan, Jason Jingzhou Liu, Jim Jiahui Yang, Kenneth Shaw, Deepak Pathak</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=GGrhakukRm" target="_blank" rel="noopener">RAVEN: Long-Horizon Reasoning and Navigation with a Visuo-Spatial-Temporal Memory</a>
+        <span class="paper-authors">Yixun Hu, Zhicheng Zheng, Lihan Zha, Chunwei Xing, Rajdeep Singh, Omar Hossain, Antonio Loquercio, Dhruv Shah</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=GB8NPqTBKj" target="_blank" rel="noopener">RepV: Scalable Neurosymbolic Plan Verification via Latent Space Alignment</a>
+        <span class="paper-authors">Yunhao Yang, Neel P. Bhatt, Pranay Samineni, Rohan Siva, Zhangyang Wang, Ufuk Topcu</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=DsD1LUjJz7" target="_blank" rel="noopener">From Imitation to Alignment: Human-Preference Flow Policies for Long-Horizon Sidewalk Navigation</a>
+        <span class="paper-authors">Honglin He, Zhizheng Liu, Vivek Alumootil, Bolei Zhou</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=CcSsgV6XxX" target="_blank" rel="noopener">Do Embodied VLMs Actually Use Their Scene-Graph Memory?</a>
+        <span class="paper-authors">Shubh Garg, Divyansh Pandey, Vedant Khandelwal, Niyati Rawal, Amit Sheth</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=B7a4XK6TPo" target="_blank" rel="noopener">WeaveRL: Weaving Reconstruction into Scene-Aware Fabrics for Perceptive Reinforcement Learning</a>
+        <span class="paper-authors">Vikram Ramasamy, Remo Steiner, David Tingdahl, Sam Mady, Karl Van Wyk, Nathan D. Ratliff, David Recasens, Soha Pouya, Tuur Stuyck, Alexander Millane</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=APQXmd9wgW" target="_blank" rel="noopener">EliGSiR: Continual RGB-D Mapping with Gaussian Splatting under Bounded Compute</a>
+        <span class="paper-authors">Björn Ellensohn, Elmar Rueckert, Christian Rauch</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=ANHjlP71Yq" target="_blank" rel="noopener">NavWorld: Scaling Long-Horizon Outdoor Language Navigation with Crowdsourced Ground-Level Imagery</a>
+        <span class="paper-authors">Jiaye Zou, Dylan Zhou, Honghao Zhu, Merritt Vassallo, Aaryan Doshi, Kenneth Llontop, Weiying Wang, Yip Fun Yeung, Jeannette Bohg, Cherie Ho</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=93UaO8NT8A" target="_blank" rel="noopener">OREN-X: Octree Residual Network for Real-Time Multi-Modal Mapping</a>
+        <span class="paper-authors">Zhirui Dai, Qihao Qian, Dinh Minh Nguyen, Quan-Dung PHAM, Kiana Bronder, Carlos Nieto-Granda, Yiyu Chen, Quan Nguyen, Nikolay Atanasov</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=8Sb1JzSmG8" target="_blank" rel="noopener">FrodoBots-27K: A Multi-Sensor Robot Navigation Dataset with Critical-Event Detection and Multi-Traverse Alignment</a>
+        <span class="paper-authors">Jiahao Ren, Yifei.Ma, Aman Sunesh, Ruixuan Zhang, Xinhao Liu, Chen Feng, Yongqing Liang</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=5JWTiCB7WZ" target="_blank" rel="noopener">WildOS: Open-Vocabulary Object Search in the Wild</a>
+        <span class="paper-authors">Hardik Shah, Manthan Patel, Erica Tevere, Deegan Atha, Marcel Kaufmann, Shehryar Khattak, Marco Hutter, Jonas Frey, Patrick Spieler</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=5BbbSUAk5Z" target="_blank" rel="noopener">Depth Representation for Navigation and Collision Avoidance in Cluttered Environments</a>
+        <span class="paper-authors">Hanyu Jin, Kenji Shimada</span>
+      </li>
+      <li>
+        <a class="paper-title" href="https://openreview.net/forum?id=3npOtsBl5D" target="_blank" rel="noopener">The Constitutional Filter: Bayesian Estimation of Compliant Agents</a>
+        <span class="paper-authors">Simon Kohaut, Felix Divo, Benedict Flade, Devendra Singh Dhami, Julian Eggert, Kristian Kersting</span>
+      </li>
+    </ol>
+    <div class="paper-pager" id="paper-pager" aria-label="Accepted papers pages"></div>
+
+    <h2 id="logistics">Logistics</h2>
+    <ul class="logistics-list">
+      <li>
+        <span class="log-label">Venue</span>
+        <span class="log-text">Room 306, JW Marriott Austin</span>
+      </li>
+      <li>
+        <span class="log-label">Posters</span>
+        <span class="log-text">We will have 30 posters. Authors selected for one of the five spotlight talks do not need to present a poster.</span>
+      </li>
+      <li>
+        <span class="log-label">Boards</span>
+        <span class="log-text">Each double-sided board will accommodate four posters (two on each side).</span>
+      </li>
+      <li>
+        <span class="log-label">Poster size</span>
+        <span class="log-text">Posters must be smaller than 4&nbsp;ft&nbsp;&times;&nbsp;4&nbsp;ft (e.g., 48&nbsp;in&nbsp;&times;&nbsp;36&nbsp;in) and sized so that two can fit side by side on each face.</span>
+      </li>
+    </ul>
+
+    <h2 id="cfp">Call for Papers</h2>
+    <p>Submissions are now closed. Contributed papers were invited on topics mapped to the six challenge areas above and are <strong>non-archival</strong> to allow dual submission with venue proceedings.</p>
+
+    <h3>Important Dates</h3>
+    <div class="dates-row">
+      <div class="date-card">
+        <div class="date-label">Submission deadline</div>
+        <div class="date-value">Oct 20, 2026</div>
+        <div class="date-sub">11:59 pm AoE &middot; closed</div>
+      </div>
+      <div class="date-card">
+        <div class="date-label">Notification of results</div>
+        <div class="date-value">Oct 25, 2026</div>
+      </div>
+      <div class="date-card emphasis">
+        <div class="date-label">Workshop</div>
+        <div class="date-value">Nov 12, 2026</div>
+        <div class="date-sub">Room 306, JW Marriott Austin</div>
+      </div>
+    </div>
+
+    <h3>Topics of Interest</h3>
+    <p>Topics of interest include, but are not limited to:</p>
+    <ul class="topic-list">
+      <li><span class="topic-title">Spatial representation learning</span><span class="topic-desc">Inductive biases, architectures, and training objectives for structured spatial understanding</span></li>
+      <li><span class="topic-title">Compositional &amp; long-horizon reasoning</span><span class="topic-desc">Decomposition of complex instructions, sub-goal planning, failure propagation</span></li>
+      <li><span class="topic-title">Generalizable cognitive maps</span><span class="topic-desc">Metric, topological, and semantic map representations; cross-environment transfer</span></li>
+      <li><span class="topic-title">Language grounding</span><span class="topic-desc">Interaction between language models and spatial representations; tight vs. loose coupling tradeoffs</span></li>
+      <li><span class="topic-title">Uncertainty-aware navigation</span><span class="topic-desc">Uncertainty representation, communication, and decision-making under partial observability</span></li>
+      <li><span class="topic-title">Evaluation methodology</span><span class="topic-desc">Benchmarks and protocols that distinguish structured reasoning from shortcut learning</span></li>
+    </ul>
+
+    <h2 id="submit">Submission Guidelines</h2>
+    <div class="spec-list">
+      <div class="spec-row">
+        <div class="spec-label">Length</div>
+        <div class="spec-text">2&ndash;4 page extended abstract or up to 8-page full paper (plus references). These page limits are suggestions rather than strict requirements.</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-label">Format</div>
+        <div class="spec-text">Submissions may use any paper template and must be anonymized for double-blind review. We recommend either the CoRL 2026 LaTeX template or the IEEE conference template.</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-label">Reviews</div>
+        <div class="spec-text">Each submission will receive at least two double-blind reviews from a program committee spanning robotics, computer vision, NLP, and cognitive science. At least three spotlight slots are reserved for junior researchers (graduate students or postdocs as first authors).</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-label">Presentation</div>
+        <div class="spec-text">Accepted submissions are invited for a poster presentation at the workshop. Five papers will also be selected for a contributed spotlight talk; spotlight presenters do not need to present a poster.</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-label">Dual submission</div>
+        <div class="spec-text">Published work, and work submitted concurrently to other conferences or workshops (including CoRL and IROS), is welcome.</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-label">Non-archival</div>
+        <div class="spec-text">Accepted submissions will be made available on the workshop website as non-archival reports, allowing subsequent submission to conferences and journals.</div>
+      </div>
+      <div class="spec-row spec-highlight">
+        <div class="spec-label">OpenReview</div>
+        <div class="spec-text">Submissions were handled through <a href="https://openreview.net/group?id=robot-learning.org/CoRL/2026/Workshop/SISREN" target="_blank" rel="noopener">OpenReview</a>. If you have any questions, do not hesitate to reach out to <a href="mailto:neel.bhatt@utdallas.edu">neel.bhatt@utdallas.edu</a>.</div>
+      </div>
+    </div>
 
     <h2 id="organizers">Organizers</h2>
     <div class="person-grid organizers-grid">
@@ -698,6 +961,95 @@
       });
       window.addEventListener('resize', setActive);
       setActive();
+    })();
+
+    (function () {
+      var perPage = 7;
+      var intervalMs = 7000;
+      var fadeMs = 450;
+      var items = Array.prototype.slice.call(document.querySelectorAll('.paper-list > li'));
+      var pager = document.getElementById('paper-pager');
+      var list = document.querySelector('.paper-list');
+      if (!items.length || !pager || !list) return;
+      var totalPages = Math.ceil(items.length / perPage);
+      var page = 0;
+      var timer = null;
+      var fading = false;
+      var dots = [];
+
+      items.forEach(function (item, i) {
+        var title = item.querySelector('.paper-title');
+        if (!title || title.querySelector('.paper-num')) return;
+        var num = document.createElement('span');
+        num.className = 'paper-num';
+        num.textContent = (i + 1) + '. ';
+        title.insertBefore(num, title.firstChild);
+      });
+
+      for (var d = 0; d < totalPages; d++) {
+        (function (index) {
+          var dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'paper-dot';
+          dot.setAttribute('aria-label', 'Show papers page ' + (index + 1));
+          dot.addEventListener('click', function () {
+            goTo(index);
+            restart();
+          });
+          pager.appendChild(dot);
+          dots.push(dot);
+        })(d);
+      }
+
+      function render() {
+        var start = page * perPage;
+        var end = start + perPage;
+        var visibleIndex = 0;
+        items.forEach(function (item, i) {
+          var visible = i >= start && i < end;
+          item.classList.toggle('is-hidden', !visible);
+          item.classList.toggle('is-stripe', visible && visibleIndex % 2 === 1);
+          item.classList.toggle('is-visible-last', visible && i === Math.min(end, items.length) - 1);
+          if (visible) visibleIndex += 1;
+        });
+        dots.forEach(function (dot, i) {
+          dot.classList.toggle('is-active', i === page);
+        });
+      }
+
+      function goTo(nextPage) {
+        if (nextPage === page || fading) return;
+        fading = true;
+        list.classList.add('is-fading');
+        setTimeout(function () {
+          page = nextPage;
+          render();
+          requestAnimationFrame(function () {
+            list.classList.remove('is-fading');
+            setTimeout(function () {
+              fading = false;
+            }, fadeMs);
+          });
+        }, fadeMs);
+      }
+
+      function next() {
+        goTo((page + 1) % totalPages);
+      }
+
+      function restart() {
+        if (timer) clearInterval(timer);
+        timer = setInterval(next, intervalMs);
+      }
+
+      list.addEventListener('mouseenter', function () {
+        if (timer) clearInterval(timer);
+        timer = null;
+      });
+      list.addEventListener('mouseleave', restart);
+
+      render();
+      restart();
     })();
   </script>
 </body>
